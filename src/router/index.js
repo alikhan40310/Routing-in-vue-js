@@ -5,6 +5,8 @@ import TableContent from '../views/TableContent.vue'
 import PortfolioView from '../views/PortfolioView.vue'
 import Jobs from '../views/Jobs/Jobs.vue'
 import JobDetails from '../views/Jobs/JobDetails.vue'
+import NotFound from '../views/Jobs/NotFound.vue'
+
 
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -46,6 +48,19 @@ const router = createRouter({
       name: 'JobDetails',
       component: JobDetails,
       props: true
+    }
+    ,
+    // redirect
+    {
+      path: '/all-jobs',
+      redirect: '/jobs'
+    },
+    // catch all
+    {
+      path: '/:catchAll(.*)',
+      name: 'NotFound',
+      component: NotFound
+
     }
   ]
 })
