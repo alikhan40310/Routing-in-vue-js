@@ -4,6 +4,8 @@ import HelloWorld from '@/components/HelloWorld.vue'
 import InputValue from './views/InputValue.vue';
 import TableContent from './views/TableContent.vue';
 import PortfolioView from './views/PortfolioView.vue';
+import Jobs from './views/Jobs/Jobs.vue';
+
 </script>
 
 <template>
@@ -14,6 +16,8 @@ import PortfolioView from './views/PortfolioView.vue';
             <RouterLink to="/input">Input</RouterLink>
             <RouterLink to="/table">Table</RouterLink>
             <RouterLink to="/portfolio">Portfolio</RouterLink>
+            <RouterLink to="/jobs">Jobs</RouterLink>
+
           </nav>
         </div>
       </div>
