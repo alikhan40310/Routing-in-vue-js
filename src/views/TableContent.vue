@@ -1,13 +1,13 @@
 <script>
- 
- 
+    import InputValue from './InputValue.vue';
+  
+
 </script>
 
 
 
 
 <template>
-
     <div class="container">
         <table class="table table-bordered mt-5">
       <thead>
@@ -54,4 +54,5 @@
       </tbody>
     </table>
     </div>
+    <InputValue></InputValue>
 </template>

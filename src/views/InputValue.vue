@@ -30,12 +30,16 @@ export default {
         this.tasks[this.editedTask].name = this.task;
         this.editedTask = null;
       }
-
+      console.log(this.tasks);
       // save array data in local storage
       localStorage.setItem("toDoList", JSON.stringify(this.tasks));
 
       // clear input
       this.task = "";
+      // routes between child components to child components
+      this.$router.push("/table");    
+  
+
     },
 
     // delete task

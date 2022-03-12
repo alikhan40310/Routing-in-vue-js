@@ -1,10 +1,27 @@
-<script setup>
+<script >
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue'
 import InputValue from './views/InputValue.vue';
 import TableContent from './views/TableContent.vue';
 import PortfolioView from './views/PortfolioView.vue';
 import Jobs from './views/Jobs/Jobs.vue';
+
+
+
+
+export default {
+  methods: {
+    redirect(){
+      this.$router.push('/');
+    },
+    back(){
+      this.$router.go(-1);
+    },
+    forward(){
+      this.$router.go(1);
+    },
+  }, 
+}
 
 </script>
 
@@ -17,11 +34,16 @@ import Jobs from './views/Jobs/Jobs.vue';
             <RouterLink to="/table">Table</RouterLink>
             <RouterLink to="/portfolio">Portfolio</RouterLink>
             <RouterLink to="/jobs">Jobs</RouterLink>
-
           </nav>
+          <div class="btns">
+            <button @click="redirect" class="btn btn-warning">Redirect</button>
+            <button @click="back" class="btn btn-warning">Go back</button>
+            <button @click="forward" class="btn btn-warning">Forward</button>
+          </div>
         </div>
       </div>
   <RouterView />
+  
 </template>
 
 <style>
@@ -54,5 +76,11 @@ nav a:hover {
     background-color: #ffc107;
     color: black;
 }
-
+.btns{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  algin-items: center;
+  margin-top: 10px;
+}
 </style>
