@@ -1,8 +1,30 @@
 <script>
-    import InputValue from './InputValue.vue';
+    export default {
+        props: ['id'],
+        name: "Table",
+
+        data() {
+            return {
+                id: this.$route.params.id,
+                job: null,
+                tasks: [],
+                task: "",
+                tasks: [],
+                editedTask: null,
+            }
+        },
+        mounted() {
+        fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(res => res.json())
+        .then(data => this.tasks = data)
+        .catch(err => console.log(err.message))
+      },
+       
+    }
+</script>
   
 
-</script>
+
 
 
 
@@ -12,17 +34,17 @@
         <table class="table table-bordered mt-5">
       <thead>
         <tr>
-          <th scope="col">Task</th>
-          <th scope="col">Type</th>
+          <th scope="col">Title</th>
+          <th scope="col">Status</th>
           <th scope="col" class="text-center">Edit</th>
           <th scope="col" class="text-center">Delete</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(task, index) in tasks" :key="index">
-          <td>{{ task.name }}</td>
+          <td>{{ task.title }}</td>
           <td>
-            {{ task.status }}
+            <input type="checkbox" v-model="task.completed">
           </td>
           <td
             @click="editTask(index)"

@@ -29,17 +29,17 @@ export default {
       <div class="bg-primary py-2 flex">    
         <div class="items">
           <nav>
-            <RouterLink to="/">home</RouterLink>
-            <RouterLink to="/input">Input</RouterLink>
-            <RouterLink to="/table">Table</RouterLink>
-            <RouterLink to="/portfolio">Portfolio</RouterLink>
-            <RouterLink to="/jobs">Jobs</RouterLink>
+            <!-- <RouterLink to="/">home</RouterLink> -->
+            <RouterLink to="/input">ToDos</RouterLink>
+            <RouterLink to="/table">ToDo Retail</RouterLink>
+            <RouterLink to="/table/:id">result</RouterLink> 
+            <!-- <RouterLink to="/jobs">Jobs</RouterLink> -->
           </nav>
-          <div class="btns">
+          <!-- <div class="btns">
             <button @click="redirect" class="btn btn-warning">Redirect</button>
             <button @click="back" class="btn btn-warning">Go back</button>
             <button @click="forward" class="btn btn-warning">Forward</button>
-          </div>
+          </div> -->
         </div>
       </div>
   <RouterView />

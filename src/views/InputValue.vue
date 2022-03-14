@@ -5,6 +5,7 @@ let storeDatas;
 storeDatas = JSON.parse(localStorage.getItem("toDoList"));
 
 export default {
+  props: ['id'],
   name: "ToDoList",
   data() {
     return {
@@ -12,6 +13,18 @@ export default {
       tasks: storeDatas ? storeDatas : [],
       editedTask: null,
     };
+  },
+  mounted() {
+     fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(res => res.json())
+    .then(data => this.tasks = data)
+    .catch(err => console.log(err.message))
+  },
+    unmounted() {
+     fetch('https://jsonplaceholder.typicode.com/todos' + this.id)
+    .then(res => res.json())
+    .then(data => this.tasks = data)
+    .catch(err => console.log(err.message))
   },
 
   methods: {
@@ -37,7 +50,7 @@ export default {
       // clear input
       this.task = "";
       // routes between child components to child components
-      this.$router.push("/table");    
+      // this.$router.push("/table");     
   
 
     },
@@ -76,20 +89,20 @@ export default {
       </div>
     </form>
     <!-- using bootstrap table -->
-    <!-- <table class="table table-bordered mt-5">
+    <table class="table table-bordered mt-5">
       <thead>
         <tr>
-          <th scope="col">Task</th>
-          <th scope="col">Type</th>
+          <th scope="col">Title</th>
+          <th scope="col">Status</th>
           <th scope="col" class="text-center">Edit</th>
           <th scope="col" class="text-center">Delete</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(task, index) in tasks" :key="index">
-          <td>{{ task.name }}</td>
+          <td>{{ task.title }}</td>
           <td>
-            {{ task.status }}
+            <input type="checkbox" v-model="task.completed">
           </td>
           <td
             @click="editTask(index)"
@@ -119,7 +132,7 @@ export default {
           </td>
         </tr>
       </tbody>
-    </table> -->
+    </table>
   </div>
 </template>
 
@@ -141,5 +154,6 @@ h2 {
 }
 .pointer {
   cursor: pointer;
+
 }
 </style>
