@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import InputValue from './views/InputValue.vue';
 import TableContent from './views/TableContent.vue';
-import PortfolioView from './views/PortfolioView.vue';
+import Result from './views/Result.vue';
 import Jobs from './views/Jobs/Jobs.vue';
 
 

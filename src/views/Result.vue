@@ -1,37 +1,37 @@
+
 <script>
     export default {
         props: ['id'],
-        name: "Table",
-
         data() {
             return {
                 id: this.$route.params.id,
-                job: null,
-                tasks: [],
                 task: "",
                 tasks: [],
                 editedTask: null,
-                newTask: '',
             }
         },
-      mounted() {
-        fetch('https://jsonplaceholder.typicode.com/todos' + this.id )
-        .then(res => res.json())
-        .then(data => this.tasks = data)
-        .catch(err => console.log(err.message))
-    },
-    
-  }
+        mounted() {
+             fetch('https://jsonplaceholder.typicode.com/todos/'+this.id)
+            .then(res => res.json())
+            .then(data => this.tasks = data)
+            .catch(err => console.log(err.message))
+            
+        },
+        methods: {
+          checkresult(){
+             console.log(this.tasks);
+            
+          },
+        }
+    }
 </script>
-  
-
-
-
-
 
 
 <template>
     <div class="container">
+      
+      <button class="btn btn-primary mt-3" @click="checkresult">check</button>
+
         <table class="table table-bordered mt-5">
       <thead>
         <tr>
@@ -42,10 +42,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(task, index) in tasks" :key="index">
-          <td>{{ task.title }}</td>
+        <tr>
+          <td>{{ tasks.title }}</td>
           <td>
-            <input type="checkbox" v-model="task.completed">
+            <input type="checkbox" v-model="tasks.completed">
           </td>
           <td
             @click="editTask(index)"
@@ -77,5 +77,4 @@
       </tbody>
     </table>
     </div>
-    <InputValue></InputValue>
 </template>

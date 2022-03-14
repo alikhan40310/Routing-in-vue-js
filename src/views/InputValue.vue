@@ -20,14 +20,11 @@ export default {
     .then(data => this.tasks = data)
     .catch(err => console.log(err.message))
   },
-    unmounted() {
-     fetch('https://jsonplaceholder.typicode.com/todos' + this.id)
-    .then(res => res.json())
-    .then(data => this.tasks = data)
-    .catch(err => console.log(err.message))
-  },
 
   methods: {
+  //  how to get data by params
+    
+
 
     // submit task
     submitTask() {
@@ -100,7 +97,8 @@ export default {
       </thead>
       <tbody>
         <tr v-for="(task, index) in tasks" :key="index">
-          <td>{{ task.title }}</td>
+          <td><RouterLink :to="'/table/' + task.id"> {{task.title}} </RouterLink> </td>
+             
           <td>
             <input type="checkbox" v-model="task.completed">
           </td>
@@ -113,7 +111,7 @@ export default {
                 width="20"
                 height="20"
                 src="../components/pen.png"
-                alt="pen"
+                alt="edit"
               />
             </div>
           </td>
@@ -126,7 +124,7 @@ export default {
                 width="20"
                 height="20"
                 src="../components/recycle.png"
-                alt="pen"
+                alt="delete"
               />
             </div>
           </td>
@@ -137,6 +135,10 @@ export default {
 </template>
 
 <style scoped>
+a{
+  text-decoration: none;
+  color: black;
+}
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
