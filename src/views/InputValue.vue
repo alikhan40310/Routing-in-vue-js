@@ -10,6 +10,8 @@ export default {
   data() {
     return {
       task: "",
+      id: this.$route.params.id,
+
       tasks: storeDatas ? storeDatas : [],
       editedTask: null,
     };
@@ -51,6 +53,9 @@ export default {
   
 
     },
+    myFunc() {
+      // this.$router.push("/table/" + this.id); 
+    },
 
     // delete task
     deleteTask(index) {
@@ -91,30 +96,17 @@ export default {
         <tr>
           <th scope="col">Title</th>
           <th scope="col">Status</th>
-          <th scope="col" class="text-center">Edit</th>
           <th scope="col" class="text-center">Delete</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(task, index) in tasks" :key="index">
-          <td><RouterLink :to="'/table/' + task.id"> {{task.title}} </RouterLink> </td>
+          <td><RouterLink @click="myFunc" :to="'/table/' + task.id"> {{task.title}} </RouterLink> </td>
              
           <td>
             <input type="checkbox" v-model="task.completed">
           </td>
-          <td
-            @click="editTask(index)"
-            style="text-align: center; cursor: pointer"
-          >
-            <div>
-              <img
-                width="20"
-                height="20"
-                src="../components/pen.png"
-                alt="edit"
-              />
-            </div>
-          </td>
+
           <td
             style="text-align: center; cursor: pointer"
              @click="deleteTask(index)" 

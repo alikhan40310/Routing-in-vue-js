@@ -11,16 +11,15 @@
             }
         },
         mounted() {
-             fetch('https://jsonplaceholder.typicode.com/todos/'+this.id)
+             fetch('https://jsonplaceholder.typicode.com/todos/' + this.id)
             .then(res => res.json())
             .then(data => this.tasks = data)
             .catch(err => console.log(err.message))
             
         },
         methods: {
-          checkresult(){
-             console.log(this.tasks);
-            
+          BackFunc(){
+             this.$router.push("/input"); 
           },
         }
     }
@@ -30,14 +29,13 @@
 <template>
     <div class="container">
       
-      <button class="btn btn-primary mt-3" @click="checkresult">check</button>
+      <button class="btn btn-primary mt-3" @click="BackFunc">Back</button>
 
         <table class="table table-bordered mt-5">
       <thead>
         <tr>
           <th scope="col">Title</th>
           <th scope="col">Status</th>
-          <th scope="col" class="text-center">Edit</th>
           <th scope="col" class="text-center">Delete</th>
         </tr>
       </thead>
@@ -46,19 +44,6 @@
           <td>{{ tasks.title }}</td>
           <td>
             <input type="checkbox" v-model="tasks.completed">
-          </td>
-          <td
-            @click="editTask(index)"
-            style="text-align: center; cursor: pointer"
-          >
-            <div>
-              <img
-                width="20"
-                height="20"
-                src="../components/pen.png"
-                alt="edit"
-              />
-            </div>
           </td>
           <td
             style="text-align: center; cursor: pointer"

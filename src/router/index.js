@@ -34,7 +34,8 @@ const router = createRouter({
     {
       path: '/table/:id',
       name: 'result',
-      component: tableId
+      component: tableId,
+      props: true,
     }
     ,
     {
@@ -53,7 +54,7 @@ const router = createRouter({
       path: '/input/:id',
       // name: 'input',
       component: InputValue,
-      // props: true
+      props: true
     }
     ,
     // redirect
